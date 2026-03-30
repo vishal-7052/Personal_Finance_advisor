@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal Finance Advisor — Get smart budget breakdowns, saving suggestions, and spending insights powered by an intelligent agent." />
+  <title>Personal Finance Advisor | Smart Budgeting &amp; Savings</title>
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ===== Header ===== -->
+  <header class="app-header">
+    <div class="logo">💰</div>
+    <h1>Personal Finance Advisor</h1>
+    <p>Smart budgeting &amp; saving suggestions — powered by an intelligent agent</p>
+  </header>
+
+  <!-- ===== Stepper ===== -->
+  <nav class="stepper" aria-label="Progress">
+    <div class="step-indicator active" data-step="1">
+      <div class="step-circle">1</div>
+      <span class="step-label">Income &amp; Expenses</span>
+    </div>
+    <div class="step-line" id="line-1-2"></div>
+    <div class="step-indicator" data-step="2">
+      <div class="step-circle">2</div>
+      <span class="step-label">Follow-up</span>
+    </div>
+    <div class="step-line" id="line-2-3"></div>
+    <div class="step-indicator" data-step="3">
+      <div class="step-circle">3</div>
+      <span class="step-label">Your Plan</span>
+    </div>
+  </nav>
+
+  <!-- ===== STEP 1 — Income & Expenses ===== -->
+  <section class="step-panel active" id="step-1">
+    <div class="glass-card">
+      <h2>💼 Your Monthly Finances</h2>
+      <p class="subtitle">Enter your monthly income and typical expenses to get started.</p>
+
+      <form id="finance-form" autocomplete="off">
+        <div class="form-grid">
+
+          <!-- Income -->
+          <div class="section-divider"><span>Income</span></div>
+
+          <div class="form-group full-width">
+            <label for="income">Monthly Income (after tax)</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="income" placeholder="e.g. 60000" min="0" required />
+            </div>
+          </div>
+
+          <!-- Expenses -->
+          <div class="section-divider"><span>Fixed Expenses</span></div>
+
+          <div class="form-group">
+            <label for="rent">Rent / Housing</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="rent" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="utilities">Utilities &amp; Bills</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="utilities" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="transport">Transport</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="transport" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="groceries">Groceries</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="groceries" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="section-divider"><span>Variable Expenses</span></div>
+
+          <div class="form-group">
+            <label for="entertainment">Entertainment</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="entertainment" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dining">Dining Out</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="dining" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subscriptions">Subscriptions</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="subscriptions" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="misc">Miscellaneous</label>
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+              <input type="number" id="misc" placeholder="0" min="0" value="0" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary" id="btn-analyse">Analyse My Finances →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== STEP 2 — Follow-up Questions ===== -->
+  <section class="step-panel" id="step-2">
+    <div class="glass-card">
+      <h2>🤖 A Few Quick Questions</h2>
+      <p class="subtitle">Our advisor agent noticed some patterns. Help us refine your plan.</p>
+      <div class="question-list" id="question-list">
+        <!-- dynamically populated -->
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" id="btn-back-1">← Back</button>
+        <button type="button" class="btn btn-primary" id="btn-get-plan">Get My Plan →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEP 3 — Results Dashboard ===== -->
+  <section class="step-panel" id="step-3">
+    <div class="glass-card" id="results-card">
+      <!-- dynamically populated -->
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
